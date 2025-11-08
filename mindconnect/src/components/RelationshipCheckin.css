@@ -1,0 +1,56 @@
+.checkin-form {
+  background: #fff;
+  padding: 28px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 15px #b0e7cb50;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.checkin-form label {
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 18px;
+  color: #23473e;
+}
+
+.checkin-form select,
+.checkin-form textarea {
+  margin-top: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #a3dbba;
+  font-size: 1em;
+  resize: vertical;
+  min-height: 72px;
+}
+
+.checkin-form button {
+  margin-top: 22px;
+  background: #20b57e;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.checkin-form button:hover {
+  background: #159364;
+}
+
+.checkin-history {
+  list-style: none;
+  padding: 0;
+  max-width: 420px;
+  margin: auto;
+}
+
+.checkin-history li {
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #c2f2e2;
+  color: #244d44;
+}

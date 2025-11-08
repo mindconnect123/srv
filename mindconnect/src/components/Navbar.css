@@ -1,0 +1,38 @@
+.navbar {
+  position: fixed;      /* Keeps the navbar at the top of the page */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #7d6ff6;  /* Or your preferred color */
+  z-index: 1000;        /* Ensures it sits above other content */
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.navbar li {
+  margin: 10px;
+}
+
+.navbar a {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Add to your main content wrapper/component */
+.main-content {
+  margin-top: 90px; /* Adjust to be at least the navbar height */
+}

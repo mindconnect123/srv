@@ -1,0 +1,217 @@
+/* Adjust body padding for fixed top navbar height */
+body {
+  padding-top: 64px; /* adjust this to your navbar height */
+  background: linear-gradient(120deg, #e3f2f9 0%, #daf4e9 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: #334e5e;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* so forms start below navbar only */
+}
+
+/* Limit max height and allow scroll if needed */
+.register-flow {
+  margin-top: 32px; /* space from navbar */
+  background: white;
+  max-width: 420px;
+  width: 90vw;
+  padding: 48px 40px 40px 40px;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(51, 78, 94, 0.12);
+  max-height: calc(100vh - 100px); /* allow fit below navbar */
+  overflow-y: auto; /* scroll if form too tall */
+}
+
+h2 {
+  color: #1f4e5f;
+  font-weight: 700;
+  font-size: 1.85rem;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 0.04em;
+}
+
+.question-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #42667e;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+input.input-field,
+textarea.input-textarea {
+  border: 1.8px solid #a7cbd8;
+  border-radius: 12px;
+  background: #f8fafb;
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1rem;
+  color: #334e5e;
+  margin-bottom: 22px;
+  outline-offset: 2px;
+  outline-color: transparent;
+  transition: border-color 0.25s ease, outline-color 0.25s ease,
+    background-color 0.25s ease;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+input.input-field:focus,
+textarea.input-textarea:focus {
+  border-color: #3a9ca8;
+  outline-color: #62b7c7;
+  background-color: #f0fbfc;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-weight: 700;
+  padding: 14px 0;
+  width: 100%;
+  font-size: 1.18rem;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 6px 18px rgba(45, 141, 153, 0.36);
+  transition: background 0.3s ease, transform 0.15s ease,
+    box-shadow 0.3s ease;
+  margin-top: 10px;
+  display: block;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #2d8d99 0%, #5db8c4 100%);
+  color: #f0f8fa;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #247580 0%, #459aa6 100%);
+  transform: scale(1.04);
+  box-shadow: 0 8px 22px rgba(36, 117, 128, 0.45);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(36, 117, 128, 0.4);
+}
+
+.btn-secondary {
+  background: #7058f4;
+  color: white;
+  box-shadow: 0 5px 14px rgba(112, 88, 244, 0.5);
+}
+
+.btn-secondary:hover {
+  background: #6046db;
+  box-shadow: 0 6px 18px rgba(96, 70, 219, 0.6);
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 14px rgba(96, 70, 219, 0.4);
+}
+
+/* Register link to toggle views */
+.register-link {
+  margin-top: 14px;
+  font-size: 1rem;
+  text-align: center;
+  color: #42667e;
+}
+
+.link-text {
+  color: #3a9ca8;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.link-text:hover {
+  color: #257383;
+  text-decoration: underline;
+}
+
+/* Option group styling */
+.options-container {
+  margin-bottom: 18px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 14px;
+  accent-color: #2d8d99;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.option-item span {
+  font-size: 1rem;
+  color: #334e5e;
+}
+
+/* Group buttons horizontally */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-group button {
+  flex: 1;
+}
+
+/* Thank you text style */
+.thank-you-text {
+  color: #1e4a56;
+  text-align: center;
+  margin-top: 36px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  user-select: none;
+}
+
+/* Smooth fade-in animation for transitions */
+.transition {
+  animation: fadeInSmooth 0.42s ease forwards;
+}
+
+@keyframes fadeInSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive tweaks */
+@media only screen and (max-width: 480px) {
+  body {
+    padding-top: 32px;
+  }
+  .register-flow {
+    padding: 36px 14px 24px 14px;
+  }
+  h2 {
+    font-size: 1.55rem;
+  }
+}

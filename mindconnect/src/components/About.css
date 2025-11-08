@@ -1,0 +1,34 @@
+.main-content {
+  margin-top: 90px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 25px;
+  font-family: Arial, sans-serif;
+  background: #e7f8f2;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px #cdeaddaa;
+  color: #23473e;
+}
+
+.about-section {
+  background: white;
+  padding: 24px 20px;
+  margin-bottom: 26px;
+  border-radius: 10px;
+  box-shadow: 0 1px 14px #b0e7cb50;
+}
+
+.about-section h3 {
+  color: #20b57e;
+  margin-bottom: 14px;
+}
+
+.about-section a {
+  color: #20b57e;
+  text-decoration: none;
+}
+
+.about-section a:hover {
+  text-decoration: underline;
+}

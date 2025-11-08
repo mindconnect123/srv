@@ -1,0 +1,53 @@
+.mood-form {
+  background: #fff;
+  padding: 26px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #b0e7cb50;
+  max-width: 420px;
+  margin-bottom: 40px;
+}
+
+.mood-form label {
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 14px;
+  color: #23473e;
+}
+
+.mood-form select, .mood-form input {
+  margin-top: 7px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #a3dbba;
+  font-size: 1em;
+}
+
+.mood-form button {
+  margin-top: 18px;
+  background: #20b57e;
+  color: #fff;
+  border: none;
+  padding: 11px 28px;
+  border-radius: 7px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.mood-form button:hover {
+  background: #159364;
+}
+
+.mood-history {
+  list-style: none;
+  padding: 0;
+  max-width: 420px;
+  margin: auto;
+}
+
+.mood-history li {
+  margin-bottom: 11px;
+  padding: 8px 0;
+  border-bottom: 1px solid #c2f2e2;
+  color: #244d44;
+}

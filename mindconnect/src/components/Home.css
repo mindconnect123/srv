@@ -1,0 +1,60 @@
+.main-content {
+  margin-top: 90px; /* Makes space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 18px;
+  background: #e7f8f2;
+  min-height: 100vh;
+}
+
+.home-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.home-hero h1 {
+  color: #23473e;
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+
+.home-hero p {
+  color: #375251;
+  font-size: 1.3em;
+  margin-bottom: 24px;
+}
+
+.home-btn {
+  display: inline-block;
+  padding: 14px 42px;
+  background: #20b57e;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.home-btn:hover {
+  background: #159364;
+}
+
+.home-features h2 {
+  font-size: 2em;
+  color: #23473e;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.home-features ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.home-features li {
+  font-size: 1.1em;
+  margin: 14px 0;
+  color: #244d44;
+  padding-left: 22px;
+}
