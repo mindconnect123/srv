@@ -6,9 +6,9 @@ function Resources() {
     {
       category: "Mental Health Help Lines",
       links: [
-        { name: "National Suicide Prevention Lifeline", url: "tel:988" },
-        { name: "Crisis Text Line", url: "sms:741741" },
-        { name: "Samaritans", url: "https://www.samaritans.org" }
+        { name: "National Suicide Prevention Lifeline", url: "https://www.bing.com/search?q=national+suicide+prevention+lifeline&form=ANNTH1&refig=6911ae5e5e8d4ec19315b1033b1e6b08&pc=DCTS&ucpdpc=UCPD" },
+        { name: "Crisis Text Line", url: "https://www.crisistextline.org/" },
+        { name: "telemanas", url: "https://telemanas.mohfw.gov.in/home" }
       ]
     },
     {

@@ -1,11 +1,22 @@
 .navbar {
-  position: fixed;      /* Keeps the navbar at the top of the page */
+  position: fixed;       /* Keeps the navbar at the top of the page */
   top: 0;
   left: 0;
   width: 100%;
-  background: #7d6ff6;  /* Or your preferred color */
+  background: #7d6ff6;  /* Your preferred color */
   z-index: 1000;        /* Ensures it sits above other content */
-  padding: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-container {
+  margin-right: 20px;
+}
+
+.navbar-logo {
+  max-height: 40px;
+  width: auto;
 }
 
 .navbar ul {
@@ -14,11 +25,12 @@
   justify-content: center;
   margin: 0;
   padding: 0;
-  gap: 10px;
+  gap: 20px;
+  flex-grow: 1;
 }
 
 .navbar li {
-  margin: 10px;
+  margin: 0;
 }
 
 .navbar a {
@@ -34,5 +46,6 @@
 
 /* Add to your main content wrapper/component */
 .main-content {
-  margin-top: 90px; /* Adjust to be at least the navbar height */
+  margin-top: 70px; /* Adjust based on navbar height */
+  padding: 20px;
 }

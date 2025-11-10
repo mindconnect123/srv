@@ -1,94 +1,138 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Chatbot.css";
+import React, { useState } from 'react';
+import './Chatbot.css';
 
-function Chatbot() {
-  const [messages, setMessages] = useState(() => {
-    const saved = localStorage.getItem("chatbotMessages");
-    return saved ? JSON.parse(saved) : [{ from: "bot", text: "Hi! How are you feeling today? You can share anything on your mind." }];
-  });
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem("chatbotMessages", JSON.stringify(messages));
-  }, [messages]);
+const MindMendChatbot = () => {
+  const [messages, setMessages] = useState([
+    { from: 'bot', text: "Hi, I'm Mind Mend. How are you feeling today?" }
+  ]);
+  const [input, setInput] = useState('');
+  const [mood, setMood] = useState(null);
 
   const addMessage = (from, text) => {
     setMessages((msgs) => [...msgs, { from, text }]);
   };
 
-  const handleSend = async () => {
+  const handleUserMessage = () => {
     if (!input.trim()) return;
+    const userMessage = input.trim();
+    addMessage('user', userMessage);
 
-    addMessage("user", input);
-    setLoading(true);
+    const lower = userMessage.toLowerCase();
 
-    try {
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-4",
-          messages: [
-            { role: "system", content: "You are a compassionate AI mental health assistant." },
-            ...messages.map(msg => ({
-              role: msg.from === "user" ? "user" : "assistant",
-              content: msg.text,
-            })),
-            { role: "user", content: input }
-          ],
-          max_tokens: 150,
-          temperature: 0.7,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
-          },
-        }
+    if (lower.includes('sad') || lower.includes('depressed')) {
+      addMessage(
+        'bot',
+        "I'm really sorry you're feeling this way. Remember, it's okay to have tough days. Would you like some coping techniques or to talk about it?"
       );
-
-      const botReply = response.data.choices[0].message.content.trim();
-      addMessage("bot", botReply);
-    } catch (error) {
-      addMessage("bot", "Sorry, I'm having trouble connecting right now.");
-      console.error(error);
-    } finally {
-      setLoading(false);
+      addMessage(
+        'bot',
+        "If it helps, I can suggest journaling exercises or mindfulness tips — just let me know."
+      );
+    } else if (lower.includes('anxious') || lower.includes('stressed')) {
+      addMessage(
+        'bot',
+        "Feeling anxious can be overwhelming. Would you like a guided breathing exercise or some helpful resources?"
+      );
+      addMessage(
+        'bot',
+        "Taking small breaks and grounding yourself can help. I can guide you through it if you'd like."
+      );
+    } else if (lower.includes('tired') || lower.includes('exhausted')) {
+      addMessage(
+        'bot',
+        "It sounds like you might be feeling worn out. Remember to prioritize rest and hydration."
+      );
+      addMessage(
+        'bot',
+        "Would you like some tips on how to improve your sleep or boost your energy gently?"
+      );
+    } else if (lower.includes('happy') || lower.includes('good')) {
+      addMessage('bot', "That's wonderful to hear! What’s been making you feel good lately?");
+      addMessage('bot', "It’s great to celebrate those positive moments!");
+    } else if (lower.includes('help') || lower.includes('support')) {
+      addMessage(
+        'bot',
+        "I'm here for you. Would you like resources to professional help, or just someone to listen?"
+      );
+    } else if (lower.includes('lonely')) {
+      addMessage(
+        'bot',
+        "Feeling lonely can be tough. Connecting with friends, journaling, or even small walks can help."
+      );
+      addMessage('bot', "I'm here to listen whenever you want to share.");
+    } else {
+      addMessage(
+        'bot',
+        "Thank you for sharing. Would you like to tell me more, or perhaps try a mood check-in?"
+      );
     }
 
-    setInput("");
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSend();
-    }
+    setInput('');
   };
 
   return (
     <div className="chatbot-container">
-      <div className="chat-window" aria-live="polite" aria-label="Chat conversation">
+      <h2 className="chatbot-header">Mind Mend Chatbot</h2>
+
+      <div className="chat-window" role="log" aria-live="polite" tabIndex="0">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`chat-message ${msg.from}`}>
-            {msg.text}
+          <div
+            key={idx}
+            className={`chat-message ${msg.from === 'bot' ? 'bot' : 'user'}`}
+          >
+            <span className="chat-bubble">{msg.text}</span>
           </div>
         ))}
       </div>
-      <input
-        type="text"
-        placeholder={loading ? "Waiting for response..." : "Type your message here..."}
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        onKeyPress={handleKeyPress}
-        aria-label="Chat message input"
-        disabled={loading}
-      />
-      <button onClick={handleSend} aria-label="Send message" disabled={loading}>
-        {loading ? "Sending..." : "Send"}
-      </button>
+
+      {!mood && (
+        <div className="mood-container">
+          <label htmlFor="moodSlider" className="mood-label">
+            How’s your mood today? (1 = low, 5 = high)
+          </label>
+          <input
+            id="moodSlider"
+            type="range"
+            min="1"
+            max="5"
+            onChange={(e) => setMood(e.target.value)}
+            className="mood-slider"
+          />
+          {mood && <p className="mood-text">Mood recorded: {mood}</p>}
+        </div>
+      )}
+
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Type your message..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && handleUserMessage()}
+          className="chat-input"
+          aria-label="User message input"
+        />
+        <button onClick={handleUserMessage} className="send-button" aria-label="Send message">
+          Send
+        </button>
+      </div>
+
+      <div className="resources">
+        <p>
+          Need urgent help? Visit{' '}
+          <a href="https://www.who.int/campaigns/world-mental-health-day" target="_blank" rel="noopener noreferrer">
+            WHO Mental Health Resources
+          </a>{' '}
+          or{' '}
+          <a href="https://www.befrienders.org/helplines" target="_blank" rel="noopener noreferrer">
+            find a helpline
+          </a>
+          .
+        </p>
+        <p>Your wellbeing matters; all data stays only in your browser and is not shared.</p>
+      </div>
     </div>
   );
-}
+};
 
-export default Chatbot;
+export default MindMendChatbot;
