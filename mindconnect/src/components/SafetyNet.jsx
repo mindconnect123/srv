@@ -11,7 +11,6 @@ function SafetyNet() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  // Save contacts to localStorage whenever updated
   useEffect(() => {
     localStorage.setItem("trustedContacts", JSON.stringify(contacts));
   }, [contacts]);
@@ -20,13 +19,7 @@ function SafetyNet() {
     e.preventDefault();
     if (!name.trim() || (!email.trim() && !phone.trim())) return;
 
-    const newContact = {
-      id: Date.now(),
-      name,
-      email,
-      phone,
-    };
-
+    const newContact = { id: Date.now(), name, email, phone };
     setContacts([...contacts, newContact]);
     setName("");
     setEmail("");
